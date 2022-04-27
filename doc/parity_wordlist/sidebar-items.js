@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["WORDS","The list of dictionary words."]],"enum":[["Error","Phrase Validation Error"]],"fn":[["random_phrase","Generate a string which is a random phrase of a number of lowercase words."],["validate_phrase","Validates given phrase and checks if:"]]});

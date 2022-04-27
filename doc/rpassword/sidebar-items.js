@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["prompt_password_stderr","Prompts for a password on STDERR and reads it from STDIN"],["prompt_password_stdout","Prompts for a password on STDOUT and reads it from STDIN"],["prompt_response_stderr",""],["prompt_response_stdout",""],["read_password","Reads a password from STDIN"],["read_response",""]]});

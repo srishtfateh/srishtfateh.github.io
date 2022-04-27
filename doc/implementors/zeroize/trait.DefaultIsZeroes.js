@@ -1,0 +1,4 @@
+(function() {var implementors = {};
+implementors["parity_crypto"] = [{"text":"impl <a class=\"trait\" href=\"zeroize/trait.DefaultIsZeroes.html\" title=\"trait zeroize::DefaultIsZeroes\">DefaultIsZeroes</a> for <a class=\"struct\" href=\"parity_crypto/publickey/struct.ZeroizeSecretKey.html\" title=\"struct parity_crypto::publickey::ZeroizeSecretKey\">ZeroizeSecretKey</a>","synthetic":false,"types":["parity_crypto::publickey::secret_key::ZeroizeSecretKey"]}];
+implementors["zeroize"] = [];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

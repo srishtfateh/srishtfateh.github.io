@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["openethereum"] = [{"text":"impl <a class=\"trait\" href=\"ethcore_blockchain/blockchain/trait.BlockChainDB.html\" title=\"trait ethcore_blockchain::blockchain::BlockChainDB\">BlockChainDB</a> for <a class=\"struct\" href=\"openethereum/db/impls/struct.AppDB.html\" title=\"struct openethereum::db::impls::AppDB\">AppDB</a>","synthetic":false,"types":["openethereum::db::impls::AppDB"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

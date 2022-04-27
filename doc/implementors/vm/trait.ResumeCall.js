@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["evm"] = [{"text":"impl&lt;Cost:&nbsp;'static + <a class=\"trait\" href=\"evm/evm/trait.CostType.html\" title=\"trait evm::evm::CostType\">CostType</a>&gt; <a class=\"trait\" href=\"vm/trait.ResumeCall.html\" title=\"trait vm::ResumeCall\">ResumeCall</a> for <a class=\"struct\" href=\"evm/interpreter/struct.Interpreter.html\" title=\"struct evm::interpreter::Interpreter\">Interpreter</a>&lt;Cost&gt;","synthetic":false,"types":["evm::interpreter::Interpreter"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["AsyncQueue","AsyncQueue is queue that uses Condvar to signal between two threads."],["ExecutionQueue","Creates thread and uses AsyncQueue to queue and execute items that are received in queue function. Queue is restricted by max_items and will return false if we want enqueue items on full queue."]]});

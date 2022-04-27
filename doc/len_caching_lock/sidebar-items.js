@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["mutex",""],["rwlock",""]],"trait":[["Len","Implement to allow a type with a len() method to be used with `LenCachingMutex` or  `LenCachingRwLock`"]]});

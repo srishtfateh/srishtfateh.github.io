@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["MaxGroupSizeUint","Little-endian large integer type"],["MaxLoopParametersUint","Little-endian large integer type"]]});

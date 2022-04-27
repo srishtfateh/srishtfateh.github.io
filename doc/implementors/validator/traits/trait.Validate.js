@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["eip_712"] = [{"text":"impl <a class=\"trait\" href=\"validator/traits/trait.Validate.html\" title=\"trait validator::traits::Validate\">Validate</a> for <a class=\"struct\" href=\"eip_712/struct.EIP712.html\" title=\"struct eip_712::EIP712\">EIP712</a>","synthetic":false,"types":["eip_712::eip712::EIP712"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

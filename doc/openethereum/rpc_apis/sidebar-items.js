@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Api",""],["ApiSet",""]],"fn":[["to_modules",""]],"macro":[["add_signing_methods",""]],"struct":[["FullDependencies","RPC dependencies for a full node."],["SignerService","Manages communication with Signer crate"]],"trait":[["Dependencies","RPC dependencies can be used to initialize RPC endpoints from APIs."]]});

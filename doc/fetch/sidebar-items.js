@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["client","Fetch client implementation."]],"struct":[["Method","The Request Method (VERB)"],["Url","A parsed URL record."]]});

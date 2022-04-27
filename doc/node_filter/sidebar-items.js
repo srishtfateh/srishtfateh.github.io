@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["peer_set",""]],"struct":[["NodeFilter","Connection filter that uses a contract to manage permissions."]]});

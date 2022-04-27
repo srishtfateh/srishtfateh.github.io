@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["WordlistError","Phrase Validation Error"]],"mod":[["brain_recover",""]],"struct":[["Brain","Simple brainwallet."],["BrainPrefix","Tries to find brain-seed keypair with address starting with given prefix."],["Password",""],["Prefix","Tries to find keypair with address starting with given prefix."]]});

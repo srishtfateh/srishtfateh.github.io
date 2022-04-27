@@ -1,0 +1,4 @@
+(function() {var implementors = {};
+implementors["ethcore_network"] = [];
+implementors["ethcore_network_devp2p"] = [{"text":"impl&lt;'s&gt; <a class=\"trait\" href=\"ethcore_network/trait.NetworkContext.html\" title=\"trait ethcore_network::NetworkContext\">NetworkContext</a> for <a class=\"struct\" href=\"ethcore_network_devp2p/struct.NetworkContext.html\" title=\"struct ethcore_network_devp2p::NetworkContext\">NetworkContext</a>&lt;'s&gt;","synthetic":false,"types":["ethcore_network_devp2p::host::NetworkContext"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

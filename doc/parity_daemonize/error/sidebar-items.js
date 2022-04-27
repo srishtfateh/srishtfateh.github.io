@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["ErrorKind","Possible errors encountered while creating daemon"]],"struct":[["Error","Error type"]]});

@@ -1,0 +1,146 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="EIP-712 encoding utilities"><meta name="keywords" content="rust, rustlang, rust-lang, eip_712"><title>eip_712 - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../dark.css" disabled><link rel="stylesheet" type="text/css" href="../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../storage.js"></script><script src="../crates.js"></script><script defer src="../main.js"></script>
+    <noscript><link rel="stylesheet" href="../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../favicon.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../eip_712/index.html"><div class="logo-container"><img class="rust-logo" src="../rust-logo.svg" alt="logo"></div>
+        </a><h2 class="location"></h2>
+    </nav>
+    <nav class="sidebar"><a class="sidebar-logo" href="../eip_712/index.html"><div class="logo-container"><img class="rust-logo" src="../rust-logo.svg" alt="logo"></div>
+        </a><h2 class="location"><a href="#">Crate eip_712</a></h2><div class="sidebar-elems"><div class="block"><ul><li class="version">Version 0.1.0</li><li><a id="all-types" href="all.html">All Items</a></li></div></ul><section><div class="block"><ul><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#functions">Functions</a></li></ul></div></section><div id="sidebar-vars" data-name="eip_712" data-ty="mod" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../eip_712/index.html"><img class="rust-logo" src="../rust-logo.svg" alt="logo"></a><nav class="sub"><div class="theme-picker hidden"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="22" height="22" alt="Pick another theme!" src="../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="main-heading">
+    <h1 class="fqn"><span class="in-band">Crate <a class="mod" href="#">eip_712</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../clipboard.svg" width="19" height="18" alt="Copy item path"></button></span></h1><span class="out-of-band"><a class="srclink" href="../src/eip_712/lib.rs.html#17-176">source</a> · <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>EIP-712 encoding utilities</p>
+<h2 id="specification"><a href="#specification">Specification</a></h2>
+<p><code>encode(domainSeparator : 𝔹²⁵⁶, message : 𝕊) = &quot;\x19\x01&quot; ‖ domainSeparator ‖ hashStruct(message)</code></p>
+<ul>
+<li>data adheres to 𝕊, a structure defined in the rigorous eip-712</li>
+<li><code>\x01</code> is needed to comply with EIP-191</li>
+<li><code>domainSeparator</code> and <code>hashStruct</code> are defined below</li>
+</ul>
+<h3 id="a-domainseparator"><a href="#a-domainseparator">A) domainSeparator</a></h3>
+<p><code>domainSeparator = hashStruct(eip712Domain)</code>
+<br/>
+<br/>
+Struct named <code>EIP712Domain</code> with the following fields</p>
+<ul>
+<li><code>name: String</code></li>
+<li><code>version: String</code></li>
+<li><code>chain_id: U256</code>,</li>
+<li><code>verifying_contract: H160</code></li>
+<li><code>salt: Option&lt;H256&gt;</code></li>
+</ul>
+<h3 id="c-hashstruct"><a href="#c-hashstruct">C) hashStruct</a></h3>
+<p><code>hashStruct(s : 𝕊) = keccak256(typeHash ‖ encodeData(s))</code>
+<br/>
+<code>typeHash = keccak256(encodeType(typeOf(s)))</code></p>
+<h4 id="i-encodetype"><a href="#i-encodetype">i) encodeType</a></h4>
+<ul>
+<li><code>name ‖ &quot;(&quot; ‖ member₁ ‖ &quot;,&quot; ‖ member₂ ‖ &quot;,&quot; ‖ … ‖ memberₙ &quot;)&quot;</code></li>
+<li>each member is written as <code>type ‖ &quot; &quot; ‖ name</code></li>
+<li>encodings cascade down and are sorted by name</li>
+</ul>
+<h4 id="ii-encodedata"><a href="#ii-encodedata">ii) encodeData</a></h4>
+<ul>
+<li>
+<p><code>enc(value₁) ‖ enc(value₂) ‖ … ‖ enc(valueₙ)</code></p>
+</li>
+<li>
+<p>each encoded member is 32-byte long</p>
+<h5 id="a-atomic"><a href="#a-atomic">a) atomic</a></h5>
+<ul>
+<li><code>boolean</code>     =&gt; <code>U256</code></li>
+<li><code>address</code>     =&gt; <code>H160</code></li>
+<li><code>uint</code>        =&gt; sign-extended <code>U256</code> in big endian order</li>
+<li><code>bytes1:31</code>   =&gt; <code>H@256</code></li>
+</ul>
+<h5 id="b-dynamic"><a href="#b-dynamic">b) dynamic</a></h5>
+<ul>
+<li><code>bytes</code>       =&gt; <code>keccak256(bytes)</code></li>
+<li><code>string</code>      =&gt; <code>keccak256(string)</code></li>
+</ul>
+<h5 id="c-referenced"><a href="#c-referenced">c) referenced</a></h5>
+<ul>
+<li><code>array</code>       =&gt; <code>keccak256(encodeData(array))</code></li>
+<li><code>struct</code>      =&gt; <code>rec(keccak256(hashStruct(struct)))</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="d-example"><a href="#d-example">D) Example</a></h3><h4 id="query"><a href="#query">Query</a></h4><div class="example-wrap"><pre class="language-json"><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;eth_signTypedData&quot;,
+  &quot;params&quot;: [
+    &quot;0xCD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826&quot;,
+    {
+      &quot;types&quot;: {
+        &quot;EIP712Domain&quot;: [
+          {
+            &quot;name&quot;: &quot;name&quot;,
+            &quot;type&quot;: &quot;string&quot;
+          },
+          {
+            &quot;name&quot;: &quot;version&quot;,
+            &quot;type&quot;: &quot;string&quot;
+          },
+          {
+            &quot;name&quot;: &quot;chainId&quot;,
+            &quot;type&quot;: &quot;uint256&quot;
+          },
+          {
+            &quot;name&quot;: &quot;verifyingContract&quot;,
+            &quot;type&quot;: &quot;address&quot;
+          }
+        ],
+        &quot;Person&quot;: [
+          {
+            &quot;name&quot;: &quot;name&quot;,
+            &quot;type&quot;: &quot;string&quot;
+          },
+          {
+            &quot;name&quot;: &quot;wallet&quot;,
+            &quot;type&quot;: &quot;address&quot;
+          }
+        ],
+        &quot;Mail&quot;: [
+          {
+            &quot;name&quot;: &quot;from&quot;,
+            &quot;type&quot;: &quot;Person&quot;
+          },
+          {
+            &quot;name&quot;: &quot;to&quot;,
+            &quot;type&quot;: &quot;Person&quot;
+          },
+          {
+            &quot;name&quot;: &quot;contents&quot;,
+            &quot;type&quot;: &quot;string&quot;
+          }
+        ]
+      },
+      &quot;primaryType&quot;: &quot;Mail&quot;,
+      &quot;domain&quot;: {
+        &quot;name&quot;: &quot;Ether Mail&quot;,
+        &quot;version&quot;: &quot;1&quot;,
+        &quot;chainId&quot;: 1,
+        &quot;verifyingContract&quot;: &quot;0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC&quot;
+      },
+      &quot;message&quot;: {
+        &quot;from&quot;: {
+          &quot;name&quot;: &quot;Cow&quot;,
+          &quot;wallet&quot;: &quot;0xCD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826&quot;
+        },
+        &quot;to&quot;: {
+          &quot;name&quot;: &quot;Bob&quot;,
+          &quot;wallet&quot;: &quot;0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB&quot;
+        },
+        &quot;contents&quot;: &quot;Hello, Bob!&quot;
+      }
+    }
+  ],
+  &quot;id&quot;: 1
+}</code></pre></div><h4 id="response"><a href="#response">Response</a></h4><div class="example-wrap"><pre class="language-json"><code>{
+  &quot;id&quot;:1,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: &quot;0x4355c47d63924e8a72e509b65029052eb6c299d53a04e167c5775fd466751c9d07299936d304c153f6443dfa05f40ff007d72911b6f72307f996231605b915621c&quot;
+}</code></pre></div></div></details><h2 id="structs" class="small-section-header"><a href="#structs">Structs</a></h2>
+<div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.EIP712.html" title="eip_712::EIP712 struct">EIP712</a></div><div class="item-right docblock-short"><p>EIP-712 struct</p>
+</div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.Error.html" title="eip_712::Error struct">Error</a></div><div class="item-right docblock-short"><p>Error type</p>
+</div></div></div><h2 id="enums" class="small-section-header"><a href="#enums">Enums</a></h2>
+<div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="enum" href="enum.ErrorKind.html" title="eip_712::ErrorKind enum">ErrorKind</a></div><div class="item-right docblock-short"><p>Possible errors encountered while hashing/encoding an EIP-712 compliant data structure</p>
+</div></div></div><h2 id="functions" class="small-section-header"><a href="#functions">Functions</a></h2>
+<div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="fn" href="fn.hash_structured_data.html" title="eip_712::hash_structured_data fn">hash_structured_data</a></div><div class="item-right docblock-short"><p>encodes and hashes the given EIP712 struct</p>
+</div></div></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="eip_712" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0 (7737e0b5c 2022-04-04)" ></div>
+</body></html>

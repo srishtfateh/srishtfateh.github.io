@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["InvalidOutputLen","`scrypt()` error"],["InvalidParams","`ScryptParams` error"]]});

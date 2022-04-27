@@ -1,0 +1,1 @@
+initSidebarItems({"macro":[["if_option",""],["if_option_vec",""],["if_vec",""],["inner_option_type",""],["inner_option_vec_type",""],["inner_vec_type",""],["return_if_parse_error",""],["underscore_to_hyphen",""],["usage",""],["usage_with_ident",""]]});

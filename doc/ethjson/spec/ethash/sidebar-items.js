@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["BlockReward","Deserializable doppelganger of block rewards for EthashParams"]],"struct":[["Ethash","Ethash engine deserialization."],["EthashParams","Deserializable doppelganger of EthashParams."]]});

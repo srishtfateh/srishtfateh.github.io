@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["node_filter"] = [{"text":"impl <a class=\"trait\" href=\"ethcore_network/connection_filter/trait.ConnectionFilter.html\" title=\"trait ethcore_network::connection_filter::ConnectionFilter\">ConnectionFilter</a> for <a class=\"struct\" href=\"node_filter/struct.NodeFilter.html\" title=\"struct node_filter::NodeFilter\">NodeFilter</a>","synthetic":false,"types":["node_filter::NodeFilter"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["ContractAddress","Secret store service contract address."],["NodeSecretKey","This node secret key."]],"fn":[["start","Start secret store-related functionality"]],"mod":[["server",""]],"struct":[["Configuration","Secret store configuration"],["Dependencies","Secret store dependencies"]]});

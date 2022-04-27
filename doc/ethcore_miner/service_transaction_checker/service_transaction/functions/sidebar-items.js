@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["certified",""],["certify",""],["delegate",""],["get",""],["get_address",""],["get_uint",""],["owner",""],["revoke",""],["set_delegate",""],["set_owner",""]]});

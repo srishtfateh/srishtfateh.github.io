@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["ethcore"] = [{"text":"impl <a class=\"trait\" href=\"ethcore_call_contract/call_contract/trait.CallContract.html\" title=\"trait ethcore_call_contract::call_contract::CallContract\">CallContract</a> for <a class=\"struct\" href=\"ethcore/client/struct.Client.html\" title=\"struct ethcore::client::Client\">Client</a>","synthetic":false,"types":["ethcore::client::client::Client"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

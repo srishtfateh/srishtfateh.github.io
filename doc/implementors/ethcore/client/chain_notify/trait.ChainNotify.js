@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["ethcore_sync"] = [{"text":"impl <a class=\"trait\" href=\"ethcore/client/chain_notify/trait.ChainNotify.html\" title=\"trait ethcore::client::chain_notify::ChainNotify\">ChainNotify</a> for <a class=\"struct\" href=\"ethcore_sync/struct.EthSync.html\" title=\"struct ethcore_sync::EthSync\">EthSync</a>","synthetic":false,"types":["ethcore_sync::api::EthSync"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

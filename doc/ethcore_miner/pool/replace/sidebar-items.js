@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["ReplaceByScoreReadinessAndValidity","Choose whether to replace based on the sender, the score, the `Readiness`, and finally the `Validity` of the transactions being compared."]]});

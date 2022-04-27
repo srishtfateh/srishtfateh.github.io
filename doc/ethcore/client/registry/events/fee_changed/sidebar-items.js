@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["event",""],["filter",""],["parse_log",""],["wildcard_filter",""]]});

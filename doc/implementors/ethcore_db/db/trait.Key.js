@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["ethcore"] = [{"text":"impl <a class=\"trait\" href=\"ethcore_db/db/trait.Key.html\" title=\"trait ethcore_db::db::Key\">Key</a>&lt;<a class=\"struct\" href=\"ethcore/trace/flat/struct.FlatBlockTraces.html\" title=\"struct ethcore::trace::flat::FlatBlockTraces\">FlatBlockTraces</a>&gt; for <a class=\"struct\" href=\"primitive_types/struct.H256.html\" title=\"struct primitive_types::H256\">H256</a>","synthetic":false,"types":["primitive_types::H256"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

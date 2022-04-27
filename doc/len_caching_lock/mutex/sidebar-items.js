@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["CachingMutexGuard","Guard comprising `MutexGuard` and `AtomicUsize` for cache"],["LenCachingMutex","Can be used in place of a `Mutex` where reading `T`’s `len()` without needing to lock, is advantageous. When the Guard is released, `T`’s `len()` will be cached. The cached `len()` may be at most 1 lock behind current state."]]});

@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["parity_rpc"] = [{"text":"impl <a class=\"trait\" href=\"jsonrpc_pubsub/types/trait.PubSubMetadata.html\" title=\"trait jsonrpc_pubsub::types::PubSubMetadata\">PubSubMetadata</a> for <a class=\"struct\" href=\"parity_rpc/v1/metadata/struct.Metadata.html\" title=\"struct parity_rpc::v1::metadata::Metadata\">Metadata</a>","synthetic":false,"types":["parity_rpc::v1::metadata::Metadata"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

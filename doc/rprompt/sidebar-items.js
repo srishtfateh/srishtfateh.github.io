@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["prompt_reply_stderr","Prompts for user input on STDERR"],["prompt_reply_stdout","Prompts for user input on STDOUT"],["read_reply","Reads user input, but without \\n as `stdin::read_line` would"]]});

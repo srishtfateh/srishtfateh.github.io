@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["parity_crypto"] = [{"text":"impl <a class=\"trait\" href=\"secp256k1/trait.ThirtyTwoByteHash.html\" title=\"trait secp256k1::ThirtyTwoByteHash\">ThirtyTwoByteHash</a> for <a class=\"struct\" href=\"parity_crypto/publickey/struct.ZeroesAllowedMessage.html\" title=\"struct parity_crypto::publickey::ZeroesAllowedMessage\">ZeroesAllowedMessage</a>","synthetic":false,"types":["parity_crypto::publickey::ZeroesAllowedMessage"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

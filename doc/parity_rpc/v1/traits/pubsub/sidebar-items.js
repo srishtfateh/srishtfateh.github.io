@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["PubSub","Parity-specific PUB-SUB rpc interface."]]});

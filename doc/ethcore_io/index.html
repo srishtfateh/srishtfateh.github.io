@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="General IO module."><meta name="keywords" content="rust, rustlang, rust-lang, ethcore_io"><title>ethcore_io - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../dark.css" disabled><link rel="stylesheet" type="text/css" href="../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../storage.js"></script><script src="../crates.js"></script><script defer src="../main.js"></script>
+    <noscript><link rel="stylesheet" href="../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../favicon.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../ethcore_io/index.html"><div class="logo-container"><img class="rust-logo" src="../rust-logo.svg" alt="logo"></div>
+        </a><h2 class="location"></h2>
+    </nav>
+    <nav class="sidebar"><a class="sidebar-logo" href="../ethcore_io/index.html"><div class="logo-container"><img class="rust-logo" src="../rust-logo.svg" alt="logo"></div>
+        </a><h2 class="location"><a href="#">Crate ethcore_io</a></h2><div class="sidebar-elems"><div class="block"><ul><li class="version">Version 1.12.0</li><li><a id="all-types" href="all.html">All Items</a></li></div></ul><section><div class="block"><ul><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#constants">Constants</a></li><li><a href="#traits">Traits</a></li><li><a href="#types">Type Definitions</a></li></ul></div></section><div id="sidebar-vars" data-name="ethcore_io" data-ty="mod" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../ethcore_io/index.html"><img class="rust-logo" src="../rust-logo.svg" alt="logo"></a><nav class="sub"><div class="theme-picker hidden"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="22" height="22" alt="Pick another theme!" src="../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="main-heading">
+    <h1 class="fqn"><span class="in-band">Crate <a class="mod" href="#">ethcore_io</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../clipboard.svg" width="19" height="18" alt="Copy item path"></button></span></h1><span class="out-of-band"><a class="srclink" href="../src/ethcore_io/lib.rs.html#17-312">source</a> · <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>General IO module.</p>
+<p>Example usage for creating a network service and adding an IO handler:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">ethcore_io</span>;
+<span class="kw">use</span> <span class="ident">ethcore_io</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">std::sync::Arc</span>;
+<span class="kw">use</span> <span class="ident">std::time::Duration</span>;
+
+<span class="kw">struct</span> <span class="ident">MyHandler</span>;
+
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>)]</span>
+<span class="kw">struct</span> <span class="ident">MyMessage</span> {
+	<span class="ident">data</span>: <span class="ident">u32</span>
+}
+
+<span class="kw">impl</span> <span class="ident">IoHandler</span><span class="op">&lt;</span><span class="ident">MyMessage</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">MyHandler</span> {
+	<span class="kw">fn</span> <span class="ident">initialize</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">io</span>: <span class="kw-2">&amp;</span><span class="ident">IoContext</span><span class="op">&lt;</span><span class="ident">MyMessage</span><span class="op">&gt;</span>) {
+		<span class="ident">io</span>.<span class="ident">register_timer</span>(<span class="number">0</span>, <span class="ident">Duration::from_secs</span>(<span class="number">1</span>)).<span class="ident">unwrap</span>();
+	}
+
+	<span class="kw">fn</span> <span class="ident">timeout</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_io</span>: <span class="kw-2">&amp;</span><span class="ident">IoContext</span><span class="op">&lt;</span><span class="ident">MyMessage</span><span class="op">&gt;</span>, <span class="ident">timer</span>: <span class="ident">TimerToken</span>) {
+		<span class="macro">println!</span>(<span class="string">&quot;Timeout {}&quot;</span>, <span class="ident">timer</span>);
+	}
+
+	<span class="kw">fn</span> <span class="ident">message</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_io</span>: <span class="kw-2">&amp;</span><span class="ident">IoContext</span><span class="op">&lt;</span><span class="ident">MyMessage</span><span class="op">&gt;</span>, <span class="ident">message</span>: <span class="kw-2">&amp;</span><span class="ident">MyMessage</span>) {
+		<span class="macro">println!</span>(<span class="string">&quot;Message {}&quot;</span>, <span class="ident">message</span>.<span class="ident">data</span>);
+	}
+}
+
+<span class="kw">fn</span> <span class="ident">main</span> () {
+	<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">service</span> <span class="op">=</span> <span class="ident">IoService</span>::<span class="op">&lt;</span><span class="ident">MyMessage</span><span class="op">&gt;</span><span class="ident">::start</span>(<span class="string">&quot;name&quot;</span>).<span class="ident">expect</span>(<span class="string">&quot;Error creating network service&quot;</span>);
+	<span class="ident">service</span>.<span class="ident">register_handler</span>(<span class="ident">Arc::new</span>(<span class="ident">MyHandler</span>)).<span class="ident">unwrap</span>();
+
+	<span class="comment">// Wait for quit condition</span>
+	<span class="comment">// ...</span>
+	<span class="comment">// Drop the service</span>
+}</code></pre></div>
+<h2 id="mio-vs-non-mio"><a href="#mio-vs-non-mio">Mio vs non-mio</a></h2>
+<p>This library has two modes: mio and not mio. The <code>mio</code> feature can be activated or deactivated
+when compiling or depending on the library.</p>
+<p>Without mio, only timers and message-passing are available. With mio, you can also use
+low-level sockets provided by mio.</p>
+<p>The non-mio mode exists because the <code>mio</code> library doesn’t compile on platforms such as
+emscripten.</p>
+</div></details><h2 id="structs" class="small-section-header"><a href="#structs">Structs</a></h2>
+<div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.IoChannel.html" title="ethcore_io::IoChannel struct">IoChannel</a></div><div class="item-right docblock-short"><p>Allows sending messages into the event loop. All the IO handlers will get the message
+in the <code>message</code> callback.</p>
+</div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.IoContext.html" title="ethcore_io::IoContext struct">IoContext</a></div><div class="item-right docblock-short"><p>IO access point. This is passed to all IO handlers and provides an interface to the IO subsystem.</p>
+</div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.IoManager.html" title="ethcore_io::IoManager struct">IoManager</a></div><div class="item-right docblock-short"><p>Root IO handler. Manages user handlers, messages and IO timers.</p>
+</div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.IoService.html" title="ethcore_io::IoService struct">IoService</a></div><div class="item-right docblock-short"><p>General IO Service. Starts an event loop and dispatches IO requests.
+‘Message’ is a notification message type</p>
+</div></div></div><h2 id="enums" class="small-section-header"><a href="#enums">Enums</a></h2>
+<div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="enum" href="enum.IoError.html" title="ethcore_io::IoError enum">IoError</a></div><div class="item-right docblock-short"><p>IO Error</p>
+</div></div></div><h2 id="constants" class="small-section-header"><a href="#constants">Constants</a></h2>
+<div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="constant" href="constant.LOCAL_STACK_SIZE.html" title="ethcore_io::LOCAL_STACK_SIZE constant">LOCAL_STACK_SIZE</a></div><div class="item-right docblock-short"><p>Stack size
+Should be modified if it is changed in Rust since it is no way
+to know or get it</p>
+</div></div><div class="item-row"><div class="item-left module-item"><a class="constant" href="constant.TOKENS_PER_HANDLER.html" title="ethcore_io::TOKENS_PER_HANDLER constant">TOKENS_PER_HANDLER</a></div><div class="item-right docblock-short"><p>Maximum number of tokens a handler can use</p>
+</div></div></div><h2 id="traits" class="small-section-header"><a href="#traits">Traits</a></h2>
+<div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="trait" href="trait.IoHandler.html" title="ethcore_io::IoHandler trait">IoHandler</a></div><div class="item-right docblock-short"><p>Generic IO handler.
+All the handler function are called from within IO event loop.
+<code>Message</code> type is used as notification data</p>
+</div></div></div><h2 id="types" class="small-section-header"><a href="#types">Type Definitions</a></h2>
+<div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="type" href="type.StreamToken.html" title="ethcore_io::StreamToken type">StreamToken</a></div><div class="item-right docblock-short"><p>Timer ID</p>
+</div></div><div class="item-row"><div class="item-left module-item"><a class="type" href="type.TimerToken.html" title="ethcore_io::TimerToken type">TimerToken</a></div><div class="item-right docblock-short"><p>Timer ID</p>
+</div></div></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="ethcore_io" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0 (7737e0b5c 2022-04-04)" ></div>
+</body></html>

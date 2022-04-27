@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Service","`SnapshotService` implementation. This controls taking snapshots and restoring from them."],["ServiceParams","Snapshot service parameters."]],"trait":[["DatabaseRestore","External database restoration handler"],["SnapshotClient","Trait alias for the Client Service used"]],"type":[["Channel","Type alias for client io channel."]]});

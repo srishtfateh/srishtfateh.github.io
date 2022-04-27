@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["ethcore_network"] = [{"text":"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.60.0/alloc/string/trait.ToString.html\" title=\"trait alloc::string::ToString\">ToString</a> for <a class=\"struct\" href=\"ethcore_network/struct.PeerCapabilityInfo.html\" title=\"struct ethcore_network::PeerCapabilityInfo\">PeerCapabilityInfo</a>","synthetic":false,"types":["ethcore_network::PeerCapabilityInfo"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

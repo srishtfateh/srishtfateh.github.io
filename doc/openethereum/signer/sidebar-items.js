@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["CODES_FILENAME",""]],"fn":[["codes_path",""],["execute",""],["generate_new_token",""],["generate_token_and_url",""],["new_service",""]],"struct":[["NewToken",""]]});

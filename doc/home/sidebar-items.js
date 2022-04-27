@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["cargo_home","Returns the storage directory used by Cargo, often knowns as `.cargo` or `CARGO_HOME`."],["cargo_home_with_cwd",""],["home_dir","Returns the path of the current user’s home directory if known."],["rustup_home","Returns the storage directory used by rustup, often knowns as `.rustup` or `RUSTUP_HOME`."],["rustup_home_with_cwd",""]]});

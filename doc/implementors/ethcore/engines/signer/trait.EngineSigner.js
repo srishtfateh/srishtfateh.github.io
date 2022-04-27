@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["parity_rpc"] = [{"text":"impl <a class=\"trait\" href=\"ethcore/engines/signer/trait.EngineSigner.html\" title=\"trait ethcore::engines::signer::EngineSigner\">EngineSigner</a> for <a class=\"struct\" href=\"parity_rpc/v1/signer/struct.EngineSigner.html\" title=\"struct parity_rpc::v1::signer::EngineSigner\">EngineSigner</a>","synthetic":false,"types":["parity_rpc::v1::helpers::engine_signer::EngineSigner"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

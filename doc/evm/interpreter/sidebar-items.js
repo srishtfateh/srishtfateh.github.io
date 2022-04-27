@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["MAX_SUB_STACK_SIZE","Maximum subroutine stack size as specified in https://eips.ethereum.org/EIPS/eip-2315."]],"enum":[["InterpreterResult","Stepping result returned by interpreter."]],"struct":[["Interpreter","Intepreter EVM implementation"],["SharedCache","Global cache for EVM interpreter"]]});

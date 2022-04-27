@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["platform","Get the platform identifier."],["raw_package_info","Provide raw information on the package."],["version","Get the standard version string for this software."],["version_data","Get the standard version data for this software."]]});

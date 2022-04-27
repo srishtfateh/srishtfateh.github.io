@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["CachingRwLockWriteGuard","Guard that caches `T`’s `len()` in an `AtomicUsize` when dropped"],["LenCachingRwLock","Can be used in place of a `RwLock` where reading `T`’s `len()` without needing to lock, is advantageous. When the WriteGuard is released, `T`’s `len()` will be cached."]]});

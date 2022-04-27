@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["InstantSeal","Instant seal engine descriptor."],["InstantSealParams","Instant seal engine params deserialization."]]});

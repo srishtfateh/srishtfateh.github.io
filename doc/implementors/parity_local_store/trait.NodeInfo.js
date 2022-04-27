@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["openethereum"] = [{"text":"impl <a class=\"trait\" href=\"parity_local_store/trait.NodeInfo.html\" title=\"trait parity_local_store::NodeInfo\">NodeInfo</a> for <a class=\"struct\" href=\"openethereum/run/struct.FullNodeInfo.html\" title=\"struct openethereum::run::FullNodeInfo\">FullNodeInfo</a>","synthetic":false,"types":["openethereum::run::FullNodeInfo"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

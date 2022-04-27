@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["parity_crypto"] = [{"text":"impl <a class=\"trait\" href=\"lazy_static/trait.LazyStatic.html\" title=\"trait lazy_static::LazyStatic\">LazyStatic</a> for <a class=\"struct\" href=\"parity_crypto/publickey/ec_math_utils/struct.CURVE_ORDER.html\" title=\"struct parity_crypto::publickey::ec_math_utils::CURVE_ORDER\">CURVE_ORDER</a>","synthetic":false,"types":["parity_crypto::publickey::ec_math_utils::CURVE_ORDER"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

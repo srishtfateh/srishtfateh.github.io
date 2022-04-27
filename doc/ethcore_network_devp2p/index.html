@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Network and general IO module."><meta name="keywords" content="rust, rustlang, rust-lang, ethcore_network_devp2p"><title>ethcore_network_devp2p - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../dark.css" disabled><link rel="stylesheet" type="text/css" href="../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../storage.js"></script><script src="../crates.js"></script><script defer src="../main.js"></script>
+    <noscript><link rel="stylesheet" href="../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../favicon.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../ethcore_network_devp2p/index.html"><div class="logo-container"><img class="rust-logo" src="../rust-logo.svg" alt="logo"></div>
+        </a><h2 class="location"></h2>
+    </nav>
+    <nav class="sidebar"><a class="sidebar-logo" href="../ethcore_network_devp2p/index.html"><div class="logo-container"><img class="rust-logo" src="../rust-logo.svg" alt="logo"></div>
+        </a><h2 class="location"><a href="#">Crate ethcore_network_devp2p</a></h2><div class="sidebar-elems"><div class="block"><ul><li class="version">Version 1.12.0</li><li><a id="all-types" href="all.html">All Items</a></li></div></ul><section><div class="block"><ul><li><a href="#structs">Structs</a></li><li><a href="#constants">Constants</a></li><li><a href="#functions">Functions</a></li><li><a href="#types">Type Definitions</a></li></ul></div></section><div id="sidebar-vars" data-name="ethcore_network_devp2p" data-ty="mod" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../ethcore_network_devp2p/index.html"><img class="rust-logo" src="../rust-logo.svg" alt="logo"></a><nav class="sub"><div class="theme-picker hidden"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="22" height="22" alt="Pick another theme!" src="../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="main-heading">
+    <h1 class="fqn"><span class="in-band">Crate <a class="mod" href="#">ethcore_network_devp2p</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../clipboard.svg" width="19" height="18" alt="Copy item path"></button></span></h1><span class="out-of-band"><a class="srclink" href="../src/ethcore_network_devp2p/lib.rs.html#17-123">source</a> · <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Network and general IO module.</p>
+<p>Example usage for creating a network service and adding an IO handler:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">ethcore_network</span> <span class="kw">as</span> <span class="ident">net</span>;
+<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">ethcore_network_devp2p</span> <span class="kw">as</span> <span class="ident">devp2p</span>;
+<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">ethereum_types</span> <span class="kw">as</span> <span class="ident">types</span>;
+<span class="kw">use</span> <span class="ident">net</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">devp2p::NetworkService</span>;
+<span class="kw">use</span> <span class="ident">std::sync::Arc</span>;
+<span class="kw">use</span> <span class="ident">std::time::Duration</span>;
+<span class="kw">use</span> <span class="ident">types::U64</span>;
+
+<span class="kw">struct</span> <span class="ident">MyHandler</span>;
+
+<span class="kw">impl</span> <span class="ident">NetworkProtocolHandler</span> <span class="kw">for</span> <span class="ident">MyHandler</span> {
+	<span class="kw">fn</span> <span class="ident">initialize</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">io</span>: <span class="kw-2">&amp;</span><span class="ident">dyn</span> <span class="ident">NetworkContext</span>) {
+		<span class="ident">io</span>.<span class="ident">register_timer</span>(<span class="number">0</span>, <span class="ident">Duration::from_secs</span>(<span class="number">1</span>));
+	}
+
+	<span class="kw">fn</span> <span class="ident">read</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">io</span>: <span class="kw-2">&amp;</span><span class="ident">dyn</span> <span class="ident">NetworkContext</span>, <span class="ident">peer</span>: <span class="kw-2">&amp;</span><span class="ident">PeerId</span>, <span class="ident">packet_id</span>: <span class="ident">u8</span>, <span class="ident">data</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) {
+		<span class="macro">println!</span>(<span class="string">&quot;Received {} ({} bytes) from {}&quot;</span>, <span class="ident">packet_id</span>, <span class="ident">data</span>.<span class="ident">len</span>(), <span class="ident">peer</span>);
+	}
+
+	<span class="kw">fn</span> <span class="ident">connected</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">io</span>: <span class="kw-2">&amp;</span><span class="ident">dyn</span> <span class="ident">NetworkContext</span>, <span class="ident">peer</span>: <span class="kw-2">&amp;</span><span class="ident">PeerId</span>) {
+		<span class="macro">println!</span>(<span class="string">&quot;Connected {}&quot;</span>, <span class="ident">peer</span>);
+	}
+
+	<span class="kw">fn</span> <span class="ident">disconnected</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">io</span>: <span class="kw-2">&amp;</span><span class="ident">dyn</span> <span class="ident">NetworkContext</span>, <span class="ident">peer</span>: <span class="kw-2">&amp;</span><span class="ident">PeerId</span>) {
+		<span class="macro">println!</span>(<span class="string">&quot;Disconnected {}&quot;</span>, <span class="ident">peer</span>);
+	}
+}
+
+<span class="kw">fn</span> <span class="ident">main</span> () {
+	<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">service</span> <span class="op">=</span> <span class="ident">NetworkService::new</span>(<span class="ident">NetworkConfiguration::new_local</span>(), <span class="prelude-val">None</span>).<span class="ident">expect</span>(<span class="string">&quot;Error creating network service&quot;</span>);
+	<span class="ident">service</span>.<span class="ident">start</span>().<span class="ident">expect</span>(<span class="string">&quot;Error starting service&quot;</span>);
+	<span class="ident">service</span>.<span class="ident">register_protocol</span>(<span class="ident">Arc::new</span>(<span class="ident">MyHandler</span>), <span class="ident">U64::from</span>(<span class="number">0x000aaa00</span>), <span class="kw-2">&amp;</span>[(<span class="number">1u8</span>, <span class="number">1u8</span>)]);
+
+	<span class="comment">// Wait for quit condition</span>
+	<span class="comment">// ...</span>
+	<span class="comment">// Drop the service</span>
+}</code></pre></div>
+</div></details><h2 id="structs" class="small-section-header"><a href="#structs">Structs</a></h2>
+<div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.NetworkContext.html" title="ethcore_network_devp2p::NetworkContext struct">NetworkContext</a></div><div class="item-right docblock-short"><p>IO access point. This is passed to all IO handlers and provides an interface to the IO subsystem.</p>
+</div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.NetworkService.html" title="ethcore_network_devp2p::NetworkService struct">NetworkService</a></div><div class="item-right docblock-short"><p>IO Service with networking
+<code>Message</code> defines a notification data type.</p>
+</div></div></div><h2 id="constants" class="small-section-header"><a href="#constants">Constants</a></h2>
+<div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="constant" href="constant.PAYLOAD_SOFT_LIMIT.html" title="ethcore_network_devp2p::PAYLOAD_SOFT_LIMIT constant">PAYLOAD_SOFT_LIMIT</a></div><div class="item-right docblock-short"><p>Network responses should try not to go over this limit.
+This should be lower than MAX_PAYLOAD_SIZE</p>
+</div></div></div><h2 id="functions" class="small-section-header"><a href="#functions">Functions</a></h2>
+<div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="fn" href="fn.validate_node_url.html" title="ethcore_network_devp2p::validate_node_url fn">validate_node_url</a></div><div class="item-right docblock-short"><p>Check if node url is valid</p>
+</div></div></div><h2 id="types" class="small-section-header"><a href="#types">Type Definitions</a></h2>
+<div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="type" href="type.NodeId.html" title="ethcore_network_devp2p::NodeId type">NodeId</a></div><div class="item-right docblock-short"><p>Node public key</p>
+</div></div><div class="item-row"><div class="item-left module-item"><a class="type" href="type.TimerToken.html" title="ethcore_network_devp2p::TimerToken type">TimerToken</a></div><div class="item-right docblock-short"><p>Timer ID</p>
+</div></div></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="ethcore_network_devp2p" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0 (7737e0b5c 2022-04-04)" ></div>
+</body></html>

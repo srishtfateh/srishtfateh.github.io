@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["ErrorKind","Possible errors encountered while hashing/encoding an EIP-712 compliant data structure"]],"fn":[["hash_structured_data","encodes and hashes the given EIP712 struct"]],"struct":[["EIP712","EIP-712 struct"],["Error","Error type"]]});

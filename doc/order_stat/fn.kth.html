@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Compute the `k`th order statistic (`k`th smallest element) of `array` via the Floyd-Rivest Algorithm[1]."><meta name="keywords" content="rust, rustlang, rust-lang, kth"><title>kth in order_stat - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../dark.css" disabled><link rel="stylesheet" type="text/css" href="../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../storage.js"></script><script src="../crates.js"></script><script defer src="../main.js"></script>
+    <noscript><link rel="stylesheet" href="../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../favicon.svg"></head><body class="rustdoc fn"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../order_stat/index.html"><div class="logo-container"><img class="rust-logo" src="../rust-logo.svg" alt="logo"></div>
+        </a><h2 class="location"></h2>
+    </nav>
+    <nav class="sidebar"><a class="sidebar-logo" href="../order_stat/index.html"><div class="logo-container"><img class="rust-logo" src="../rust-logo.svg" alt="logo"></div>
+        </a><div class="sidebar-elems"><h2 class="location"><a href="index.html">In order_stat</a></h2><div id="sidebar-vars" data-name="kth" data-ty="fn" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../order_stat/index.html"><img class="rust-logo" src="../rust-logo.svg" alt="logo"></a><nav class="sub"><div class="theme-picker hidden"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="22" height="22" alt="Pick another theme!" src="../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="main-heading">
+    <h1 class="fqn"><span class="in-band">Function <a href="index.html">order_stat</a>::<wbr><a class="fn" href="#">kth</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../clipboard.svg" width="19" height="18" alt="Copy item path"></button></span></h1><span class="out-of-band"><a class="srclink" href="../src/order_stat/lib.rs.html#163-168">source</a> · <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span></div><div class="docblock item-decl"><pre class="rust fn"><code>pub fn kth&lt;T:&nbsp;<a class="trait" href="https://doc.rust-lang.org/1.60.0/core/cmp/trait.Ord.html" title="trait core::cmp::Ord">Ord</a>&gt;(array: <a class="primitive" href="https://doc.rust-lang.org/1.60.0/std/primitive.slice.html">&amp;mut [T]</a>, k: <a class="primitive" href="https://doc.rust-lang.org/1.60.0/std/primitive.usize.html">usize</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/1.60.0/std/primitive.reference.html">&amp;mut </a>T</code></pre></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Compute the <code>k</code>th order statistic (<code>k</code>th smallest element) of
+<code>array</code> via the Floyd-Rivest Algorithm[1].</p>
+<p>The return value is the same as that returned by the following
+function (although the final order of <code>array</code> may differ):</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">fn</span> <span class="ident">kth_sort</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Ord</span><span class="op">&gt;</span>(<span class="ident">array</span>: <span class="kw-2">&amp;mut</span> [<span class="ident">T</span>], <span class="ident">k</span>: <span class="ident">usize</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="ident">T</span> {
+    <span class="ident">array</span>.<span class="ident">sort</span>();
+    <span class="kw-2">&amp;mut</span> <span class="ident">array</span>[<span class="ident">k</span>]
+}</code></pre></div>
+<p>That is, <code>k</code> is zero-indexed, so the minimum corresponds to <code>k = 0</code> and the maximum <code>k = array.len() - 1</code>. Furthermore, <code>array</code> is
+mutated, placing the <code>k</code>th order statistic into <code>array[k]</code> and
+partitioning the remaining values so that smaller elements lie
+before and larger after.</p>
+<p>If <em>n</em> is the length of <code>array</code>, <code>kth</code> operates with (expected)
+running time of <em>O(n)</em>, and a single query is usually much faster
+than sorting <code>array</code> (per <code>kth_sort</code>). However, if many order
+statistic queries need to be performed, it may be more efficient
+to sort and index directly.</p>
+<p>For convenience, a reference to the requested order statistic,
+<code>array[k]</code>, is returned directly. It is also accessibly via
+<code>array</code> itself.</p>
+<p>[1]: Robert W. Floyd and Ronald L. Rivest (1975). Algorithm 489:
+the algorithm SELECT—for finding the <em>i</em>th smallest of <em>n</em> elements
+[M1]. <em>Commun. ACM</em> <strong>18</strong>, 3,
+173. doi:<a href="http://doi.acm.org/10.1145/360680.360694">10.1145/360680.360694</a>.</p>
+<h2 id="panics"><a href="#panics">Panics</a></h2>
+<p>If <code>k &gt;= array.len()</code>, <code>kth</code> panics.</p>
+<h2 id="examples"><a href="#examples">Examples</a></h2>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">v</span> <span class="op">=</span> [<span class="number">10</span>, <span class="number">0</span>, <span class="op">-</span><span class="number">10</span>, <span class="number">20</span>];
+<span class="kw">let</span> <span class="ident">kth</span> <span class="op">=</span> <span class="ident">order_stat::kth</span>(<span class="kw-2">&amp;mut</span> <span class="ident">v</span>, <span class="number">2</span>);
+
+<span class="macro">assert_eq!</span>(<span class="kw-2">*</span><span class="ident">kth</span>, <span class="number">10</span>);</code></pre></div>
+<p>If the order of the original array, or position of the element is
+important, one can collect references to a temporary before querying.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">std::mem</span>;
+
+<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">v</span> <span class="op">=</span> [<span class="number">10</span>, <span class="number">0</span>, <span class="op">-</span><span class="number">10</span>, <span class="number">20</span>];
+
+<span class="comment">// compute the order statistic of an array of references (the Ord</span>
+<span class="comment">// impl defers to the internals, so this is correct)</span>
+<span class="kw">let</span> <span class="ident">kth</span> <span class="op">=</span> <span class="kw-2">*</span><span class="ident">order_stat::kth</span>(<span class="kw-2">&amp;mut</span> <span class="ident">v</span>.<span class="ident">iter</span>().<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">i32</span><span class="op">&gt;</span><span class="op">&gt;</span>(), <span class="number">2</span>);
+
+<span class="comment">// the position is the difference between the start of the array</span>
+<span class="comment">// and the order statistic&#39;s location.</span>
+<span class="kw">let</span> <span class="ident">index</span> <span class="op">=</span> (<span class="ident">kth</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="ident">usize</span> <span class="op">-</span> <span class="kw-2">&amp;</span><span class="ident">v</span>[<span class="number">0</span>] <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="ident">usize</span>) <span class="op">/</span> <span class="ident">mem::size_of_val</span>(<span class="kw-2">&amp;</span><span class="ident">v</span>[<span class="number">0</span>]);
+
+<span class="macro">assert_eq!</span>(<span class="kw-2">*</span><span class="ident">kth</span>, <span class="number">10</span>);
+<span class="macro">assert_eq!</span>(<span class="ident">index</span>, <span class="number">0</span>);</code></pre></div>
+</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="order_stat" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0 (7737e0b5c 2022-04-04)" ></div>
+</body></html>

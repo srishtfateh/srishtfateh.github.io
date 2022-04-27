@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["diff_pod","Determine difference between two optionally existant `Account`s. Returns None if they are the same."]],"struct":[["PodAccount","An account, expressed as Plain-Old-Data (hence the name). Does not have a DB overlay cache, code hash or anything like that."]]});

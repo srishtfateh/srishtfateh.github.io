@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["CallContract","Provides `call_contract` method"],["RegistryInfo","Provides information on a blockchain service and it’s registry"]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["Transaction","Extends transaction with gas verification method."]]});

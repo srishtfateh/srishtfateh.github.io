@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["from_keypair","Creates a new `EngineSigner` from given key pair."]],"trait":[["EngineSigner","Everything that an Engine needs to sign messages."]]});

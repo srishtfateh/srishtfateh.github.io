@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["parity_rpc"] = [{"text":"impl <a class=\"trait\" href=\"jsonrpc_server_utils/session/trait.SessionStats.html\" title=\"trait jsonrpc_server_utils::session::SessionStats\">SessionStats</a> for <a class=\"struct\" href=\"parity_rpc/v1/extractors/struct.WsStats.html\" title=\"struct parity_rpc::v1::extractors::WsStats\">WsStats</a>","synthetic":false,"types":["parity_rpc::v1::extractors::WsStats"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

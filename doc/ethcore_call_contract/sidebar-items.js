@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["call_contract","Provides CallContract and RegistryInfo traits"]]});

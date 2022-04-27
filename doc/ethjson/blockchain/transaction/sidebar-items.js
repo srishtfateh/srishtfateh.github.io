@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["AccessListItem",""],["Transaction","Blockchain test transaction deserialization."]],"type":[["AccessList",""]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["CheckedSystemTime","Temporary trait for `checked operations` on SystemTime until these are available in the standard library"]]});
